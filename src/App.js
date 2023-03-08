@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Colaboradores from './components/Colaboradores.jsx';
+import Inputs from './components/Inputs.jsx';
+import { BaseColaboradores } from './BaseColaboradores';
+import Busqueda from "./components/Busqueda.jsx";
 
 function App() {
+  const [usuarios, setUsuarios] = useState(BaseColaboradores)
+  const [filtroPalabra, setFiltroPalabra] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="d-flex flex-column align-items-center p-3">
+      <h1>Desafio 3</h1>
+      <hr/>
+      <Inputs usuarios={usuarios} setUsuarios={setUsuarios} />
+      <hr/>
+      <Busqueda usuarios={usuarios} setUsuarios={setUsuarios} filtroPalabra={filtroPalabra} setFiltroPalabra={setFiltroPalabra}/>
+      <hr/>
+      <Colaboradores usuarios={usuarios} filtroPalabra={filtroPalabra}/>
     </div>
   );
 }
